@@ -2,7 +2,7 @@
 
 class Breed extends Eloquent {
     public $timestamps = false;
-    public function Cats(){
+    public function cats(){
         return $this->hasMany('Cat');
     }
 
