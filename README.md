@@ -1,2 +1,0 @@
-# cats
-my cats database
