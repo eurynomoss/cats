@@ -11,6 +11,10 @@
 |
 */
 
+/**2nd solution
+ * Route::model('cat', 'Cat');
+ */
+
 Route::get('/', function(){
 	return Redirect::to('cats');
 });
@@ -30,8 +34,17 @@ Route::get('cats/breeds/{name}', function($name){
 
 Route::get('cats/{id}', function($id)
 {
-	return "Cat #$id";
+	$cat = Cat::find($id);
+	return View::make('cats.single')
+		->with('cat', $cat);
 })->where('id', '[0-9]+');
+
+/**2nd solution
+ * Route::get('cats/{cat}', function(Cat $cat) {
+ * return View::make('cats.single')
+ * ->with('cat', $cat);
+ * });
+ */
 
 Route::get('about', function(){
 	return View::make('about')->with('number_of_cats', 9000);
